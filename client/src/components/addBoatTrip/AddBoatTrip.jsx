@@ -60,7 +60,7 @@ const AddBoatTrip = () => {
 
     try {
       const response = await axios.post(
-        "http://localhost:8000/api/boattrip/createboattrip",
+        "http://localhost:4000/api/boattrip/createboattrip",
         boatTrip
       );
       if (response.status === 200) {
@@ -157,7 +157,7 @@ const AddBoatTrip = () => {
               {errors.tripType && <span className="error">{errors.tripType}</span>}
             </div>
             <div className="inputGroup">
-              <label htmlFor="noOfEmployees">No Of Employees Joining</label>
+              <label htmlFor="noOfEmployees">No Of Passengers Joining</label>
               <input
                 type="number"
                 onChange={inputHandler}
@@ -165,12 +165,12 @@ const AddBoatTrip = () => {
                 id="noOfEmployees"
                 name="noOfEmployees"
                 autoComplete="off"
-                placeholder="No Of Employees Joining"
+                placeholder="No Of Passengers Joining"
               />
               {errors.noOfEmployees && <span className="error">{errors.noOfEmployees}</span>}
             </div>
             <div className="inputGroup">
-              <label htmlFor="fishingCaught">Fishing Caught(Kg)</label>
+              <label htmlFor="fishingCaught">Estimated travel distance (miles)</label>
               <input
                 type="number"
                 onChange={inputHandler}
@@ -178,12 +178,12 @@ const AddBoatTrip = () => {
                 id="fishingCaught"
                 name="fishingCaught"
                 autoComplete="off"
-                placeholder="Fishing Caught(Kg)"
+                placeholder="distance in miles"
               />
               {errors.fishingCaught && <span className="error">{errors.fishingCaught}</span>}
             </div>
             <div className="inputGroup">
-              <label htmlFor="costAvg">Cost Avg (Rs)</label>
+              <label htmlFor="costAvg">Rental Cost</label>
               <input
                 type="number"
                 onChange={inputHandler}
@@ -196,7 +196,7 @@ const AddBoatTrip = () => {
               {errors.costAvg && <span className="error">{errors.costAvg}</span>}
             </div>
             <div className="inputGroup">
-              <label htmlFor="profitAvg">Profit Avg(Rs)</label>
+              <label htmlFor="profitAvg">Fuel required</label>
               <input
                 type="number"
                 onChange={inputHandler}

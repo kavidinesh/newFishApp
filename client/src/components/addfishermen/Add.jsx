@@ -487,7 +487,7 @@ const Addfishermen = () => {
                 <div className="Fishermen_form-container">
                     
                     <div className="Fishermen_header">
-                        <h2 className="Fishermen_form-title">Add New Fisherman</h2>
+                        <h2 className="Fishermen_form-title">Add New Supplier</h2>
                     </div>
                     <form className="addFishermenForm" onSubmit={submitForm}>
                         <div className="Fishermen_inputGroup">
@@ -495,9 +495,9 @@ const Addfishermen = () => {
                             <input type="text" onChange={(event) => {nameinputHandler(event); handleInputChange(event);}} value={fishermen.name} id="name" name="name" autoComplete='off' placeholder="Enter name"/>
                         </div>
                         <div className="Fishermen_inputGroup">
-                            <label htmlFor="age">Age</label> <br /> 
+                            <label htmlFor="age">Supplier ID</label> <br /> 
                             {/* updated and make change in Edit.jsx */}
-                            <input type="text" onChange={(event) => {ageinputHandler(event); handleInputChangeAge(event);}} value={fishermen.age} id="age" name="age" autoComplete='off' placeholder="Enter age"/>
+                            <input type="text" onChange={(event) => {ageinputHandler(event); handleInputChangeAge(event);}} value={fishermen.age} id="age" name="age" autoComplete='off' placeholder="Enter ID"/>
                         </div>
                         <div className="Fishermen_inputGroup"> 
                             <label htmlFor="nic">NIC</label> <br /> 
@@ -505,15 +505,15 @@ const Addfishermen = () => {
                             <input type="text" onChange={(event) => {nicInputHandler(event); handleInputChangeNIC(event);}} value={fishermen.nic} id="nic" name="nic" autoComplete='off' placeholder="0123456789 'X' or 'V'"/>
                         </div>
                         <div className="Fishermen_inputGroup">
-                            <label htmlFor="address">Address</label> <br />
-                            <input type="text" onChange={inputHandler} id="address" name="address" autoComplete='off' placeholder="Enter Address"/>
+                            <label htmlFor="address">Product Type</label> <br />
+                            <input type="text" onChange={inputHandler} id="address" name="address" autoComplete='off' placeholder="Product Type"/>
                         </div>
                         <div className="Fishermen_inputGroup">
-                            <label htmlFor="experience">Experience (Years)</label> <br />
-                            <input type="text" onChange={(event) => {expinputHandler(event); handleInputChangeExp(event);}} value={fishermen.experience} id="experience" name="experience" autoComplete='off' placeholder="Enter Experience"/>
+                            <label htmlFor="experience">Product Price</label> <br />
+                            <input type="text" onChange={(event) => {expinputHandler(event); handleInputChangeExp(event);}} value={fishermen.experience} id="experience" name="experience" autoComplete='off' placeholder="Enter Price"/>
                         </div>
                         <div className='Fishermen_inputGroup'>
-                            <label htmlFor="trip">Trip (Weeks)</label> <br />
+                            <label htmlFor="trip">Supply time</label> <br />
                             <select onChange={inputHandler} id="trip" name="trip">
                                 <option value="0">Select Method</option>
                                 <option value="2">2 weeks</option>
@@ -538,12 +538,12 @@ const Addfishermen = () => {
                             </select>
                         </div>
                         <div className="Fishermen_inputGroup">
-                            <label htmlFor="salary">Salary(Rs.)</label> <br />
-                            <input type="text" onChange={inputHandler} id="salary" value={fishermen.salary} name="salary" autoComplete='off' placeholder="Salary of fisherman" readOnly/>
+                            <label htmlFor="salary">Quantity</label> <br />
+                            <input type="text" onChange={inputHandler} id="salary" value={fishermen.salary} name="salary" autoComplete='off' placeholder="quantity " readOnly/>
                         </div>
                         <div className="Fishermen_inputGroup">
                             <center>
-                                <button type="submit" className='Fishermen_submitButton'>ADD Fishermen</button>
+                                <button type="submit" className='Fishermen_submitButton'>ADD Supplier</button>
                             </center>
                         </div>
                     </form>

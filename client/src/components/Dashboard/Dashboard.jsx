@@ -1,630 +1,100 @@
 import React from "react";
-import "./Dashboard.css";
-import inventoryImg from "./dashboardimage/inventory.png";
+import { useNavigate } from "react-router-dom";
 import fishpricehandling from "./dashboardimage/fishprice.png";
 import boat from "./dashboardimage/boat.jpg";
-import equipment from "./dashboardimage/equipment.jpeg";
-import catchlog from "./dashboardimage/catchlog.jpg";
-import salary from "./dashboardimage/salary.jpg";
-import hr from "./dashboardimage/hr.jpg";
-import vehicle from "./dashboardimage/vehicle.jpeg";
 import fbuy from "./dashboardimage/fbuy.png";
-import { useNavigate } from "react-router-dom";
+import hr from "./dashboardimage/hr.jpg";
+import "./Dashboard.css";
 
 const Dashboard = ({ position }) => {
   const navigate = useNavigate();
+
+  const dashItems = [
+    {
+      key: "fishprice",
+      label: "Inventory Management",
+      image: fishpricehandling,
+      route: "/fishprice",
+      roles: ["owner", "coordinator", "inventorymanager", "writtingperson", ""],
+    },
+    {
+      key: "boattrip",
+      label: "Boat Trip Management",
+      image: boat,
+      route: "/boattrip",
+      roles: ["owner", "coordinator", "tansportmanager", "hrmanager", ""],
+    },
+    {
+      key: "fbuy",
+      label: "Customer Management",
+      image: fbuy,
+      route: "/FishBuyer",
+      roles: ["owner", "coordinator", "inventorymanager", "hrmanager", ""],
+    },
+    {
+      key: "hr",
+      label: "Supplier Management",
+      image: hr,
+      route: "/fishermenprofiles",
+      roles: ["owner", "coordinator", "hrmanager", ""],
+    },
+  ];
+
+  const filteredItems = dashItems.filter((item) =>
+    item.roles.includes(position)
+  );
+
   return (
-    <div className="dashboard-container">
-      <div className="dashboard-content">
-        {/* owner */}
-        {position === "owner" && (
-          <>
-            <div className="dash-item">
-              <img src={fishpricehandling} alt="" />
-
-              <div className="dash-item-bottom">
-                <div className="dash-item-name">Fish Price Handling </div>
-                <div className="dash-item-button">
-                  <button
-                    onClick={() => {
-                      navigate("/fishprice");
-                    }}
-                  >
-                    Manage
-                  </button>
-                </div>
-              </div>
-            </div>
-            <div className="dash-item">
-              <img src={salary} alt="" />
-
-              <div className="dash-item-bottom">
-                <div className="dash-item-name"> Salary Management</div>
-                <div className="dash-item-button">
-                <button
-                    onClick={() => {
-                      navigate("/empsalary");
-                    }}
-                  >
-                    Manage
-                  </button>
-                </div>
-              </div>
-            </div>
-            <div className="dash-item">
-              <img src={boat} alt="" />
-
-              <div className="dash-item-bottom">
-                <div className="dash-item-name">Boat Trip Management</div>
-                <div className="dash-item-button">
-                <button
-                    onClick={() => {
-                      navigate("/boattrip");
-                    }}
-                  >
-                    Manage
-                  </button>
-                </div>
-              </div>
-            </div>
-            <div className="dash-item">
-              <img src={equipment} alt="" />
-
-              <div className="dash-item-bottom">
-                <div className="dash-item-name">Equipment Handling </div>
-                <div className="dash-item-button">
-                <button
-                    onClick={() => {
-                      navigate("/equipment");
-                    }}
-                  >
-                    Manage
-                  </button>
-                </div>
-              </div>
-            </div>
-            <div className="dash-item">
-              <img src={vehicle} alt="" />
-
-              <div className="dash-item-bottom">
-                <div className="dash-item-name">Vehicle Management </div>
-                <div className="dash-item-button">
-                <button
-                    onClick={() => {
-                      navigate("/vehiclemanagement");
-                    }}
-                  >
-                    Manage
-                  </button>
-                </div>
-              </div>
-            </div>
-            <div className="dash-item">
-              <img src={fbuy} alt="" />
-
-              <div className="dash-item-bottom">
-                <div className="dash-item-name">Fish Buyers Management </div>
-                <div className="dash-item-button">
-                <button
-                    onClick={() => {
-                      navigate("/FishBuyer");
-                    }}
-                  >
-                    Manage
-                  </button>
-                </div>
-              </div>
-            </div>
-            <div className="dash-item">
-              <img src={catchlog} alt="" />
-
-              <div className="dash-item-bottom">
-                <div className="dash-item-name">Catch Log Management</div>
-                <div className="dash-item-button">
-                <button
-                    onClick={() => {
-                      navigate("/Catchlog");
-                    }}
-                  >
-                    Manage
-                  </button>
-                </div>
-              </div>
-            </div>
-            <div className="dash-item">
-              <img src={hr} alt="" />
-
-              <div className="dash-item-bottom">
-                <div className="dash-item-name">Fishermen Profile Management </div>
-                <div className="dash-item-button">
-                <button
-                    onClick={() => {
-                      navigate("/fishermenprofiles");
-                    }}
-                  >
-                    Manage
-                  </button>
-                </div>
-              </div>
-            </div>
-          </>
-        )}
-
-        {/*coordinator*/}
-        {position === "coordinator" && (
-         <>
-         <div className="dash-item">
-           <img src={fishpricehandling} alt="" />
-
-           <div className="dash-item-bottom">
-             <div className="dash-item-name">Fish Price Handling </div>
-             <div className="dash-item-button">
-               <button
-                 onClick={() => {
-                   navigate("/fishprice");
-                 }}
-               >
-                 Manage
-               </button>
-             </div>
-           </div>
-         </div>
-         <div className="dash-item">
-           <img src={salary} alt="" />
-
-           <div className="dash-item-bottom">
-             <div className="dash-item-name"> Salary Management</div>
-             <div className="dash-item-button">
-             <button
-                 onClick={() => {
-                   navigate("/empsalary");
-                 }}
-               >
-                 Manage
-               </button>
-             </div>
-           </div>
-         </div>
-         <div className="dash-item">
-           <img src={boat} alt="" />
-           <div className="dash-item-bottom">
-             <div className="dash-item-name">Boat Trip Management</div>
-             <div className="dash-item-button">
-             <button
-                 onClick={() => {
-                   navigate("/boattrip");
-                 }}
-               >
-                 Manage
-               </button>
-             </div>
-           </div>
-         </div>
-         <div className="dash-item">
-           <img src={equipment} alt="" />
-
-           <div className="dash-item-bottom">
-             <div className="dash-item-name">Equipment Handling </div>
-             <div className="dash-item-button">
-             <button
-                 onClick={() => {
-                   navigate("/equipment");
-                 }}
-               >
-                 Manage
-               </button>
-             </div>
-           </div>
-         </div>
-         <div className="dash-item">
-           <img src={vehicle} alt="" />
-
-           <div className="dash-item-bottom">
-             <div className="dash-item-name">Vehicle Management </div>
-             <div className="dash-item-button">
-             <button
-                 onClick={() => {
-                   navigate("/vehiclemanagement");
-                 }}
-               >
-                 Manage
-               </button>
-             </div>
-           </div>
-         </div>
-         <div className="dash-item">
-           <img src={fbuy} alt="" />
-
-           <div className="dash-item-bottom">
-             <div className="dash-item-name">Fish Buyers Management </div>
-             <div className="dash-item-button">
-             <button
-                 onClick={() => {
-                   navigate("/FishBuyer");
-                 }}
-               >
-                 Manage
-               </button>
-             </div>
-           </div>
-         </div>
-         <div className="dash-item">
-           <img src={catchlog} alt="" />
-
-           <div className="dash-item-bottom">
-             <div className="dash-item-name">Catch Log Management</div>
-             <div className="dash-item-button">
-             <button
-                 onClick={() => {
-                   navigate("/Catchlog");
-                 }}
-               >
-                 Manage
-               </button>
-             </div>
-           </div>
-         </div>
-         <div className="dash-item">
-           <img src={hr} alt="" />
-
-           <div className="dash-item-bottom">
-             <div className="dash-item-name">Fishermen Profile Management </div>
-             <div className="dash-item-button">
-             <button
-                 onClick={() => {
-                   navigate("/fishermenprofiles");
-                 }}
-               >
-                 Manage
-               </button>
-             </div>
-           </div>
-         </div>
-       </>
-        )}
-
-        {/* Transport */}
-        {position === "tansportmanager" && (
-          <>
-            <div className="dash-item">
-              <img src={boat} alt="" />
-
-              <div className="dash-item-bottom">
-                <div className="dash-item-name">Boat Trip Management</div>
-                <div className="dash-item-button">
-                <button
-                    onClick={() => {
-                      navigate("/boattrip");
-                    }}
-                  >
-                    Manage
-                  </button>
-                </div>
-              </div>
-            </div>
-
-            <div className="dash-item">
-              <img src={vehicle} alt="" />
-
-              <div className="dash-item-bottom">
-                <div className="dash-item-name">Vehicle Management </div>
-                <div className="dash-item-button">
-                <button
-                    onClick={() => {
-                      navigate("/vehiclemanagement");
-                    }}
-                  >
-                    Manage
-                  </button>
-                </div>
-              </div>
-            </div>
-          </>
-        )}
-        {/* Inventory*/}
-        {position === "inventorymanager" && (
-          <>
-         <div className="dash-item">
-           <img src={fishpricehandling} alt="" />
-
-           <div className="dash-item-bottom">
-             <div className="dash-item-name">Fish Price Handling </div>
-             <div className="dash-item-button">
-               <button
-                 onClick={() => {
-                   navigate("/fishprice");
-                 }}
-               >
-                 Manage
-               </button>
-             </div>
-           </div>
-         </div>
-         <div className="dash-item">
-           <img src={equipment} alt="" />
-
-           <div className="dash-item-bottom">
-             <div className="dash-item-name">Equipment Handling </div>
-             <div className="dash-item-button">
-             <button
-                 onClick={() => {
-                   navigate("/equipment");
-                 }}
-               >
-                 Manage
-               </button>
-             </div>
-           </div>
-         </div>
-         <div className="dash-item">
-           <img src={fbuy} alt="" />
-
-           <div className="dash-item-bottom">
-             <div className="dash-item-name">Fish Buyers Management </div>
-             <div className="dash-item-button">
-             <button
-                 onClick={() => {
-                   navigate("/FishBuyer");
-                 }}
-               >
-                 Manage
-               </button>
-             </div>
-           </div>
-         </div>
-         <div className="dash-item">
-           <img src={catchlog} alt="" />
-
-           <div className="dash-item-bottom">
-             <div className="dash-item-name">Catch Log Management</div>
-             <div className="dash-item-button">
-             <button
-                 onClick={() => {
-                   navigate("/Catchlog");
-                 }}
-               >
-                 Manage
-               </button>
-             </div>
-           </div>
-         </div>
-          </>
-        )}
-        {/* wirtting person */}
-
-        {position === "writtingperson" && (
-          <>
-           
-            <div className="dash-item">
-              <img src={fishpricehandling} alt="" />
-              <div className="centered">
-              <div className="dash-item-bottom">
-                <div className="dash-item-name">Fish Price Handling </div>
-                <div className="dash-item-button">
-                <button
-                    onClick={() => {
-                      navigate("/fishprice");
-                    }}
-                  >
-                    Manage
-                  </button>
-                </div>
-              </div>
-            </div>
-            </div> 
-          </>
-        )}
-
-        {/*Human Resouse manager */}
-        {position === "hrmanager" && (
-          <>
-        <div className="dash-item">
-           <img src={fbuy} alt="" />
-
-           <div className="dash-item-bottom">
-             <div className="dash-item-name">Fish Buyers Management </div>
-             <div className="dash-item-button">
-             <button
-                 onClick={() => {
-                   navigate("/FishBuyer");
-                 }}
-               >
-                 Manage
-               </button>
-             </div>
-           </div>
-         </div>
-
-         <div className="dash-item">
-           <img src={salary} alt="" />
-
-           <div className="dash-item-bottom">
-             <div className="dash-item-name"> Salary Management</div>
-             <div className="dash-item-button">
-             <button
-                 onClick={() => {
-                   navigate("/empsalary");
-                 }}
-               >
-                 Manage
-               </button>
-             </div>
-           </div>
-         </div>
-
-         <div className="dash-item">
-              <img src={hr} alt="" />
-
-              <div className="dash-item-bottom">
-                <div className="dash-item-name">Fishermen Profile Management </div>
-                <div className="dash-item-button">
-                <button
-                    onClick={() => {
-                      navigate("/fishermenprofiles");
-                    }}
-                  >
-                    Manage
-                  </button>
-                </div>
-              </div>
-            </div>
-
-            <div className="dash-item">
-              <img src={boat} alt="" />
-
-              <div className="dash-item-bottom">
-                <div className="dash-item-name">Boat Trip Management</div>
-                <div className="dash-item-button">
-                <button
-                    onClick={() => {
-                      navigate("/boattrip");
-                    }}
-                  >
-                    Manage
-                  </button>
-                </div>
-              </div>
-            </div>  
-          </>
-        )}
-
-        {position === "" && (
-          <>
-            <div className="dash-item">
-              <img src={inventoryImg} alt="" />
-
-              <div className="dash-item-bottom">
-                <div className="dash-item-name">Fish Price Handling </div>
-                <div className="dash-item-button">
-                <button
-                    onClick={() => {
-                      navigate("/fishprice");
-                    }}
-                  >
-                    Manage
-                  </button>
-                </div>
-              </div>
-            </div>
-            <div className="dash-item">
-              <img src={inventoryImg} alt="" />
-
-              <div className="dash-item-bottom">
-                <div className="dash-item-name"> Salary Management</div>
-                <div className="dash-item-button">
-                <button
-                    onClick={() => {
-                      navigate("/fishprice");
-                    }}
-                  >
-                    Manage
-                  </button>
-                </div>
-              </div>
-            </div>
-            <div className="dash-item">
-              <img src={inventoryImg} alt="" />
-
-              <div className="dash-item-bottom">
-                <div className="dash-item-name">Boat Trip Management</div>
-                <div className="dash-item-button">
-                <button
-                    onClick={() => {
-                      navigate("/boattrip");
-                    }}
-                  >
-                    Manage
-                  </button>
-                </div>
-              </div>
-            </div>
-            <div className="dash-item">
-              <img src={inventoryImg} alt="" />
-
-              <div className="dash-item-bottom">
-                <div className="dash-item-name">Equipment Handling </div>
-                <div className="dash-item-button">
-                <button
-                    onClick={() => {
-                      navigate("/equipment");
-                    }}
-                  >
-                    Manage
-                  </button>
-                </div>
-              </div>
-            </div>
-            <div className="dash-item">
-              <img src={inventoryImg} alt="" />
-
-              <div className="dash-item-bottom">
-                <div className="dash-item-name">Vehicle Management </div>
-                <div className="dash-item-button">
-                <button
-                    onClick={() => {
-                      navigate("/vehiclemanagement");
-                    }}
-                  >
-                    Manage
-                  </button>
-                </div>
-              </div>
-            </div>
-            <div className="dash-item">
-              <img src={inventoryImg} alt="" />
-
-              <div className="dash-item-bottom">
-                <div className="dash-item-name">Buyer Management </div>
-                <div className="dash-item-button">
-                <button
-                    onClick={() => {
-                      navigate("/FishBuyer");
-                    }}
-                  >
-                    Manage
-                  </button>
-                </div>
-              </div>
-            </div>
-            <div className="dash-item">
-              <img src={inventoryImg} alt="" />
-
-              <div className="dash-item-bottom">
-                <div className="dash-item-name">Catch Log Management</div>
-                <div className="dash-item-button">
-                <button
-                    onClick={() => {
-                      navigate("/Catchlog");
-                    }}
-                  >
-                    Manage
-                  </button>
-                </div>
-              </div>
-            </div>
-            <div className="dash-item">
-              <img src={inventoryImg} alt="" />
-
-              <div className="dash-item-bottom">
-                <div className="dash-item-name">Fishermen Profile Management </div>
-                <div className="dash-item-button">
-                <button
-                    onClick={() => {
-                      navigate("/fishermenprofiles");
-                    }}
-                  >
-                    Manage
-                  </button>
-                </div>
-              </div>
-            </div>
-          </>
-        )}
+    <div className="modern-dashboard-wrapper">
+      {/* Hero Section */}
+      <div className="hero-section">
+        <div className="hero-overlay">
+          <h1 className="hero-text">Welcome to the Fishery Management Dashboard</h1>
+        </div>
       </div>
+
+      {/* Dashboard Cards */}
+      <div className="modern-dashboard-container">
+        <div className="modern-dashboard-content">
+          {filteredItems.map((item) => (
+            <div key={item.key} className="modern-card">
+              <img src={item.image} alt={item.label} className="modern-card-img" />
+              <div className="modern-card-body">
+                <h2 className="modern-card-title">{item.label}</h2>
+                <button
+                  className="modern-btn"
+                  onClick={() => navigate(item.route)}
+                >
+                  Manage
+                </button>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Contact Section */}
+      <div className="contact-section">
+        <div className="contact-container">
+          <h2 className="contact-heading">Start Selling Today!</h2>
+          <p className="contact-subtext">
+            Join our marketplace and grow your seafood business.
+          </p>
+          <form className="contact-form">
+            <input type="text" placeholder="Full Name" className="contact-input" />
+            <input type="email" placeholder="Email" className="contact-input" />
+            <input type="text" placeholder="Phone Number" className="contact-input" />
+            <button className="contact-button">Get Started</button>
+          </form>
+        </div>
+      </div>
+
+      {/* Footer */}
+      <footer className="footer">
+        <p>© 2025 Fish Market. All Rights Reserved.</p>
+      </footer>
     </div>
   );
 };
 
 export default Dashboard;
-
-

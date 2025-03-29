@@ -128,7 +128,7 @@ const DeletedFishermenProfiles = () => {
 
     return (
         <div className="deletedFishermenTable">
-            <center><h2>Deleted Fishermen Profiles</h2></center>
+            <center><h2>Deleted Suppliers</h2></center>
             <button className='DeletedGeneratePDFreport' onClick={downloadPDFreport}>Generate report</button>
             <table border={1} cellPadding={10} cellSpacing={0}>
                 <thead>
@@ -136,10 +136,10 @@ const DeletedFishermenProfiles = () => {
                         <th>Name</th>
                         <th>Age</th>
                         <th>NIC</th>
-                        <th>Address</th>
+                        <th>Product Type</th>
                         <th>Contact Number</th>
-                        <th>Experience (Years)</th>
-                        <th>Trip (Weeks)</th>
+                        <th>Product Price</th>
+                        <th>Quantity</th>
                         <th>Availability</th>
                         <th>Salary (Rs.)</th>
                         <th>Deleted Date & Time</th>

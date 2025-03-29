@@ -5,6 +5,7 @@ import { Link, useNavigate } from "react-router-dom";
 import Logo from "../../backgroundimage/logo.jpg";
 import { jsPDF } from "jspdf";
 import "jspdf-autotable";
+import { FaCloudSun, FaTimes } from 'react-icons/fa'; // Weather Icon and Close Icon
 
 const BoatTrip = () => {
   const navigate = useNavigate();
@@ -13,6 +14,11 @@ const BoatTrip = () => {
   const [selectedTripType, setSelectedTripType] = useState("");
   const [sortByProfit, setSortByProfit] = useState(false);
   const [currentDate, setCurrentDate] = useState(new Date());
+  const [weatherData, setWeatherData] = useState(null); // State for weather data
+  const [showWeatherPopup, setShowWeatherPopup] = useState(false); // Toggle for weather popup
+  const [userLocation, setUserLocation] = useState({ latitude: null, longitude: null }); // User's location
+  const [weatherError, setWeatherError] = useState(null); // Error state for weather data
+  const [currentDayIndex, setCurrentDayIndex] = useState(0); // Index to navigate through the days
 
   const handleSortByProfit = () => {
     setSortByProfit(!sortByProfit);
@@ -43,6 +49,63 @@ const BoatTrip = () => {
 
     return () => clearInterval(interval);
   }, []);
+
+  useEffect(() => {
+    if ("geolocation" in navigator) {
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          const { latitude, longitude } = position.coords;
+          setUserLocation({ latitude, longitude });
+        },
+        (error) => {
+          console.error("Error getting location: ", error);
+        }
+      );
+    } else {
+      console.log("Geolocation is not supported by this browser.");
+    }
+  }, []);
+
+  const fetchWeatherForecast = () => {
+    if (userLocation.latitude && userLocation.longitude) {
+      const API_KEY = '3f8265e2fd6333167853a1058533336f'; // Replace with your actual OpenWeatherMap API key
+      const { latitude, longitude } = userLocation;
+
+      // Construct URL for the 5-day weather forecast API
+      const url = `https://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&appid=${API_KEY}&units=metric`;
+
+      fetch(url)
+        .then((response) => response.json())
+        .then((data) => setWeatherData(data)) // Set the forecast data
+        .catch((error) => {
+          setWeatherError(error.message);
+          console.error("Error fetching weather forecast data:", error);
+        });
+    }
+  };
+
+  const handleWeatherClick = () => {
+    setShowWeatherPopup(!showWeatherPopup); // Toggle weather popup visibility
+    if (!weatherData && !weatherError) {
+      fetchWeatherForecast(); // Fetch the forecast if not already fetched
+    }
+  };
+
+  const handlePreviousDay = () => {
+    if (currentDayIndex > 0) {
+      setCurrentDayIndex(currentDayIndex - 1);
+    }
+  };
+
+  const handleNextDay = () => {
+    if (currentDayIndex < 4) { // Only allow moving up to Day 5
+      setCurrentDayIndex(currentDayIndex + 1);
+    }
+  };
+
+  const handleCloseCard = () => {
+    setShowWeatherPopup(false); // Close the weather popup
+  };
 
   const deleteBoatTrip = async (id, tripID, boatName) => {
     const confirmDelete = window.confirm(`Are you sure you want to delete Trip ID: ${tripID} And Boat Name ${boatName}?`);
@@ -75,10 +138,10 @@ const BoatTrip = () => {
         "TripID",
         "Boat Name",
         "Trip Type",
-        "No Of Employees Joining",
-        "Fishing Caught(Kg)",
-        "Cost Avg(Rs)",
-        "Profit Avg(Rs)",
+        "Passengers",
+        "Distance",
+        "Rental Cost",
+        "fuel required",
       ];
 
       const tableData = filteredBoatTrips.map((boatTrip) => [
@@ -141,6 +204,45 @@ const BoatTrip = () => {
           <h1>Boat Trip Details: {currentDate.toLocaleDateString()}</h1>
         </div>
       </center>
+
+      {/* Weather Icon */}
+      <div className="weather-icon" onClick={handleWeatherClick}>
+        <FaCloudSun size={30} color="#ffcc00" />
+      </div>
+
+      {/* Weather Popup */}
+      {showWeatherPopup && weatherData && (
+        <div className="weather-popup">
+          <div className="close-btn" onClick={handleCloseCard}>
+            <FaTimes size={20} />
+          </div>
+
+          <h3>{currentDayIndex === 0 ? "Today" : `Day ${currentDayIndex + 1}`}</h3>
+
+          {/* Weather Card */}
+          <div className="weather-card">
+            <p><strong>Location:</strong> {weatherData.city.name}</p>
+            <p><strong>Temperature:</strong> {weatherData.list[currentDayIndex].main.temp}°C</p>
+            <p><strong>Condition:</strong> {weatherData.list[currentDayIndex].weather[0].description}</p>
+            <p><strong>Humidity:</strong> {weatherData.list[currentDayIndex].main.humidity}%</p>
+            <p><strong>Wind Speed:</strong> {weatherData.list[currentDayIndex].wind.speed} m/s</p>
+          </div>
+
+          {/* Navigation Buttons */}
+          <div className="weather-navigation">
+            <button onClick={handlePreviousDay} disabled={currentDayIndex === 0}>Previous</button>
+            <button onClick={handleNextDay} disabled={currentDayIndex === 4}>Next</button>
+          </div>
+        </div>
+      )}
+
+      {/* Error Handling for Weather Fetch */}
+      {weatherError && (
+        <div className="weather-error">
+          <p>{weatherError}</p>
+        </div>
+      )}
+
       <div className="boatbuttonContainer">
       </div>
       <div className="boatsearchboattrip">
@@ -184,10 +286,10 @@ const BoatTrip = () => {
             <th>TripID</th>
             <th>Boat Name</th>
             <th>Trip Type</th>
-            <th>No Of Employees Joining</th>
-            <th>Fishing Caught(Kg)</th>
-            <th>Cost Avg(Rs)</th>
-            <th>Profit Avg(Rs)</th>
+            <th>No Of Passengers Joining</th>
+            <th>Estimated travel distance (miles)</th>
+            <th>Rental Cost</th>
+            <th>Fuel required</th>
             <th>Actions</th>
           </tr>
         </thead>

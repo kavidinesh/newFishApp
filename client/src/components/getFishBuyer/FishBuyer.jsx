@@ -149,12 +149,12 @@ const paginate = (pageNumber) => setCurrentPage(pageNumber);
           [
             "Name",
             "Contact Number",
-            "Last Payment Option",
-            "Last Payment",
-            "Last Buy Quantity",
+            "Payment Option",
+            "Payment",
+            "Buy Quantity",
             "Total Payment ",
             "Arrear ",
-            "Last Purchase Date",
+            "Purchase Date",
        
           ],
         ],
@@ -264,20 +264,20 @@ return (
       </div>
       <center>
         <h1 className="fishbuyerdate">
-          {currentDate.toLocaleDateString()} Fish Buyer Management
+          {currentDate.toLocaleDateString()} Customer Management
         </h1>
       </center>
     
       <div className="fishbuyercenterfix">
         <div className="fishbuyeraddButton1">
           <Link to={"/addfishbuyer"} className="link">
-            Add A New Fish Buyer
+            Add A New Customer
           </Link>
         </div>
        
         <div className="fishbuyerdownloadButtonContainer">
           <button onClick={downloadPDF} className="fishbuyerdownloadButton">
-            Download Fish Buyer Document
+            Download Customer Details
           </button>
         </div>
       </div>
@@ -289,12 +289,12 @@ return (
           <tr>
             <th className="fishbuyerheader2">Name</th>
             <th className="fishbuyerheader1">Contact Number</th>
-            <th className="fishbuyerheader2">Last Payment Option</th>
-            <th className="fishbuyerheader1">Last Payment(Rs)</th>
-            <th className="fishbuyerheader1">Last Buy Quantity(kg)</th>
+            <th className="fishbuyerheader2">Payment Option</th>
+            <th className="fishbuyerheader1">Payment(Rs)</th>
+            <th className="fishbuyerheader1">Buy Quantity(kg)</th>
             <th className="fishbuyerheader2">Total Payment(Rs)</th>
             <th className="fishbuyerheader1">Arrear(Rs)</th>
-            <th className="fishbuyerheader2">Last Purchase Date</th>
+            <th className="fishbuyerheader2">Purchase Date</th>
             <th className="fishbuyerheader1">Action</th>
            
           </tr>

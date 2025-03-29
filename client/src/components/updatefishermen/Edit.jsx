@@ -497,8 +497,8 @@ const Editfishermen = () => {
                             <input type="text" value={fishermen.name} onChange={(event) => {nameinputHandler(event); handleInputChange(event);}} id="name" name="name" autoComplete='off' placeholder="Enter name"/>
                         </div>
                         <div className="Fishermen_inputGroup">
-                            <label htmlFor="age">Age</label> <br />
-                            <input type="text" value={fishermen.age} onChange={(event) => {ageinputHandler(event); handleInputChangeAge(event);}} id="age" name="age" autoComplete='off' placeholder="Enter age"/>
+                            <label htmlFor="age">Supplier ID</label> <br />
+                            <input type="text" value={fishermen.age} onChange={(event) => {ageinputHandler(event); handleInputChangeAge(event);}} id="age" name="age" autoComplete='off' placeholder="Enter ID"/>
                         </div>
                         <div className="Fishermen_inputGroup">
                             <label htmlFor="nic">NIC</label> <br />
@@ -509,15 +509,15 @@ const Editfishermen = () => {
                             <input type="email" value={fishermen.email} onChange={inputChangeHandler} id="email" name="email" autoComplete='off' placeholder="Enter Email"/>
                         </div> */}
                         <div className="Fishermen_inputGroup">
-                            <label htmlFor="address">Address</label> <br />
-                            <input type="text" value={fishermen.address} onChange={inputChangeHandler} id="address" name="address" autoComplete='off' placeholder="Enter Address"/>
+                            <label htmlFor="address">Product Type</label> <br />
+                            <input type="text" value={fishermen.address} onChange={inputChangeHandler} id="address" name="address" autoComplete='off' placeholder="Enter Product Type"/>
                         </div>
                         <div className="Fishermen_inputGroup">
-                            <label htmlFor="experience">Experience (Years)</label> <br />
-                            <input type="text" value={fishermen.experience} onChange={(event) => {expinputHandler(event); handleInputChangeExp(event);}} id="experience" name="experience" autoComplete='off' placeholder="Enter Experience"/>
+                            <label htmlFor="experience">Product Price</label> <br />
+                            <input type="text" value={fishermen.experience} onChange={(event) => {expinputHandler(event); handleInputChangeExp(event);}} id="experience" name="experience" autoComplete='off' placeholder="Enter Price"/>
                         </div>
                         <div className='Fishermen_inputGroup'>
-                            <label htmlFor="trip">Trip (Weeks)</label> <br />
+                            <label htmlFor="trip">Supply Time</label> <br />
                             <select onChange={inputChangeHandler} value={fishermen.trip} id="trip" name="trip" >
                                 <option value="0" >Select Trip length</option>
                                 <option value="2">2 weeks</option>
@@ -542,7 +542,7 @@ const Editfishermen = () => {
                             </select>
                         </div>
                         <div className="Fishermen_inputGroup">
-                            <label htmlFor="salary">Salary(Rs.)</label> <br />
+                            <label htmlFor="salary">Quantity</label> <br />
                             <input type="text" value={fishermen.salary} onChange={inputChangeHandler} id="salary" name="salary" autoComplete='off' placeholder="Salary of fisherman" readOnly/>
                         </div>
                         <div className="Fishermen_inputGroup">

@@ -76,7 +76,7 @@ const FishPrice = () => {
             "Grade",
             "Wholesale Price",
             "Retail Price",
-            "Avg. Weight",
+            "Quantity",
             "Today Avail",
           ],
         ],
@@ -265,7 +265,7 @@ const FishPrice = () => {
         </div>
         <center>
           <h1 className="fishdate">
-            {currentDate.toLocaleDateString()} Fish Price List
+            {currentDate.toLocaleDateString()} Inventory List
           </h1>
         </center>
         <Select
@@ -279,7 +279,7 @@ const FishPrice = () => {
         <div className="fishcenterfix">
           <div className="fishaddButton1">
             <Link to={"/addfish"} className="link">
-              Add A New Fish
+              Add Stock
             </Link>
           </div>
           <button
@@ -290,7 +290,7 @@ const FishPrice = () => {
           </button>
           <div className="fishdownloadButtonContainer">
             <button onClick={downloadPDF} className="fishdownloadButton">
-              Download Fish Price List
+              Download Inventory List
             </button>
           </div>
         </div>
@@ -334,7 +334,7 @@ const FishPrice = () => {
               <th className="header1">Grade</th>
               <th className="header2">Wholesale Price(Rs)</th>
               <th className="header1">Retail Price(Rs)</th>
-              <th className="header2">Average Weight(Kg)</th>
+              <th className="header2">Quantity</th>
               <th className="header1">Today Availability</th>
             </tr>
           </thead>

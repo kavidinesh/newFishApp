@@ -151,7 +151,7 @@ const AddFishBuyer = () => {
               {errors.contact_number && <span className="fishbuyererror">{errors.contact_number}</span>}
             </div>
             <div className="fishbuyerinputGroup">
-              <label htmlFor="last_payment_option">Last Payment Option</label>
+              <label htmlFor="last_payment_option">Payment Option</label>
               <select id="last_payment_option" name="last_payment_option" onChange={inputHandler} value={fishbuyer.last_payment_option}>
                 <option value="Creditor">Creditor</option>
                 <option value="Debtor">Debtor</option>
@@ -160,13 +160,13 @@ const AddFishBuyer = () => {
             </div>
             {/* ... rest of the code ... */}
             <div className="fishbuyerinputGroup">
-              <label htmlFor="last_payment">Last Payment</label>
-              <input type="text" onChange={inputHandler} id="last_payment" name="last_payment" autoComplete="off" placeholder="Last Payment(LKR)" value={fishbuyer.last_payment} />
+              <label htmlFor="last_payment">Payment</label>
+              <input type="text" onChange={inputHandler} id="last_payment" name="last_payment" autoComplete="off" placeholder="Payment(LKR)" value={fishbuyer.last_payment} />
               {errors.last_payment && <span className="fishbuyererror">{errors.last_payment}</span>}
             </div>
             <div className="fishbuyerinputGroup">
-              <label htmlFor="last_buy_quantity">Last Buy Quantity</label>
-              <input type="text" onChange={inputHandler} id="last_buy_quantity" name="last_buy_quantity" autoComplete="off" placeholder="Last Buy Quantity(kg)" value={fishbuyer.last_buy_quantity} />
+              <label htmlFor="last_buy_quantity">Buy Quantity</label>
+              <input type="text" onChange={inputHandler} id="last_buy_quantity" name="last_buy_quantity" autoComplete="off" placeholder="Buy Quantity(kg)" value={fishbuyer.last_buy_quantity} />
               {errors.last_buy_quantity && <span className="fishbuyererror">{errors.last_buy_quantity}</span>}
             </div>
             <div className="fishbuyerinputGroup">
@@ -180,7 +180,7 @@ const AddFishBuyer = () => {
               {errors.arrear && <span className="fishbuyererror">{errors.arrear}</span>}
             </div>
             <div className="fishbuyerinputGroup">
-              <label htmlFor="last_purchase_date">Last Purchase Date</label>
+              <label htmlFor="last_purchase_date">Purchase Date</label>
               <input type="date" onChange={handleDateInput} id="last_purchase_date" name="last_purchase_date" autoComplete="off" placeholder="(DD/MM/YYYY)" value={fishbuyer.last_purchase_date} max={new Date().toISOString().split('T')[0]} />
             </div>
             <div className="fishbuyerinputGroup">

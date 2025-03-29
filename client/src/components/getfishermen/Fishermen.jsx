@@ -132,14 +132,14 @@ const Fishermen = () => {
             head: [
                 [
                 "Name",
-                "Age",
+                "Supplier ID",
                 "NIC",
-                "Address",
+                "Product Type",
                 "Contact_Number",
-                "Experience(Years)",
-                "Trip(Weeks)",
+                "Product Price",
+                "Supply Time",
                 "Availability",
-                "Salary(Rs.)"
+                "Quantity"
                 ],
             ],
             body: tableData,
@@ -193,12 +193,12 @@ const Fishermen = () => {
         <div className="fishermenTable">
 
             <div className="dateTimeContainer">
-                <span className="currentDateTime">&ensp; Fishermen Profiles <br />{currentDateTime}</span>
+                <span className="currentDateTime">&ensp; Supplier Management <br />{currentDateTime}</span>
             </div>
 
             <div className="Fishermen_add_delete_button">
-                <Link to={"/addfishermen"} className="Fishermen_addButton">Add Fishermen</Link>
-                <Link to={"/deletedfishermen"} className="Fishermen_DeleteButton">Deleted fishermen Profiles</Link>
+                <Link to={"/addfishermen"} className="Fishermen_addButton">Add Supplier</Link>
+                <Link to={"/deletedfishermen"} className="Fishermen_DeleteButton">Deleted Suppliers</Link>
             </div>
             
             {/* <div className="Fishermen_searchSection"> */}
@@ -227,15 +227,15 @@ const Fishermen = () => {
                 <thead>
                     <tr>
                     <th>Name</th>
-                    <th>Age</th>
+                    <th>Supplier ID</th>
                     <th>NIC</th>
                     {/* <th>Email</th> */}
-                    <th>Address</th>
-                    <th>Contact_Number</th>
-                    <th>Experience<br/>(Years)</th>
-                    <th>Trip<br/>(Weeks)</th>
+                    <th>Product Type</th>
+                    <th>Contact Number</th>
+                    <th>Product Price</th>
+                    <th>Supply Time</th>
                     <th>Availability</th>
-                    <th>Salary <br/>(Rs.)</th>
+                    <th>Quantity</th>
                     <th>Actions</th>
                     </tr>
                 </thead>

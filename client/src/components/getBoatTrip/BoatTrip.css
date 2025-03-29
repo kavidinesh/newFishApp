@@ -159,3 +159,81 @@
 .boatboattriptable tbody tr:hover {
   background-color: #d3d3d3;
 }
+
+.weather-icon {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #f8f8f8;
+  border-radius: 50%;
+  padding: 15px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.weather-icon:hover {
+  transform: scale(1.1);
+}
+
+.weather-popup {
+  position: fixed;
+  bottom: 60px;
+  right: 20px;
+  background-color: #fff;
+  padding: 20px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  z-index: 1000;
+  text-align: left;
+  width: 250px;
+}
+
+.weather-card {
+  padding: 10px;
+  margin: 5px 0;
+  background-color: #f0f8ff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.weather-card p {
+  margin: 5px 0;
+}
+
+.close-btn {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  cursor: pointer;
+}
+
+.weather-navigation {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.weather-navigation button {
+  padding: 5px 10px;
+  background-color: #ffcc00;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.weather-navigation button:disabled {
+  background-color: #d3d3d3;
+  cursor: not-allowed;
+}
+
+.weather-error {
+  position: fixed;
+  bottom: 80px;
+  right: 20px;
+  background-color: red;
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+  z-index: 1000;
+}

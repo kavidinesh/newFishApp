@@ -1,12 +1,13 @@
-//server setup
-
+// server setup
 import express from "express";
 import mongoose from "mongoose";
 import bodyParser from "body-parser";
 import dotenv from "dotenv";
 import cors from "cors";
-import fishroute from "./routes/fishpriceRoute.js";
 import morgan from "morgan";
+
+// Import routes
+import fishroute from "./routes/fishpriceRoute.js";
 import userRouter from "./routes/userRoute.js";
 import Catchroute from "./routes/catchRoute.js";
 import fishermenroute from "./routes/fishermenRoute.js";
@@ -16,35 +17,48 @@ import vehicleroute from "./routes/VehicleRoute.js";
 import equipmentroute from "./routes/equipmentRoute.js";
 import buyerroute from "./routes/fishbuyerRoute.js";
 
-
-const app = express();
-app.use(bodyParser.json());
-app.use(cors());
+// Load environment variables
 dotenv.config();
 
+const app = express();
+const PORT = process.env.PORT || 4000;
+const MONGO_URL = process.env.MONGOURL;
+
+
+if (!MONGO_URL) {
+  console.error("❌ MongoDB connection string is missing. Check your .env file!");
+  process.exit(1);
+}
+
+// Middleware
+app.use(bodyParser.json());
+app.use(cors());
 app.use(morgan("dev"));
 
+// Routes
 app.use("/api/fish", fishroute);
 app.use("/api/user", userRouter);
 app.use("/api/employee", employeeroute);
-app.use("/api/boattrip",boattriproute);
-app.use("/api/catch",Catchroute);
-app.use("/api/fishermen", fishermenroute)
-app.use("/api/vehicle", vehicleroute)
-app.use("/api/equipment",equipmentroute);
-app.use("/api/buyer",buyerroute);
+app.use("/api/boattrip", boattriproute);
+app.use("/api/catch", Catchroute);
+app.use("/api/fishermen", fishermenroute);
+app.use("/api/vehicle", vehicleroute);
+app.use("/api/equipment", equipmentroute);
+app.use("/api/buyer", buyerroute);
 
-
-const PORT = process.env.PORT || 4000;
-const URL = process.env.MONGOURL;
-
+// Connect to MongoDB
 mongoose
-  .connect(URL)
+  .connect(MONGO_URL, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
   .then(() => {
-    console.log("DB Connected successfully");
-
+    console.log("✅ MongoDB Connected successfully");
     app.listen(PORT, () => {
-      console.log(`server is running on port : ${PORT}`);
+      console.log(`🚀 Server is running on port: ${PORT}`);
     });
   })
-  .catch((error) => console.log(error));
+  .catch((error) => {
+    console.error("❌ MongoDB Connection Error:", error);
+    process.exit(1);
+  });

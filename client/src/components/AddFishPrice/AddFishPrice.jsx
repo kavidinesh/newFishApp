@@ -98,7 +98,7 @@ const AddFishPrice = () => {
         </div>
         <div className="fishform-container">
           <div className="fishheader">
-            <h2 className="fishform-title">Add A New Fish</h2>
+            <h2 className="fishform-title">Add Stock</h2>
           </div>
           <form className="fishform" onSubmit={submitForm}>
             <div className="fishinputGroup">
@@ -190,7 +190,7 @@ const AddFishPrice = () => {
               )}
             </div>
             <div className="fishinputGroup">
-              <label htmlFor="average_weight">Average Weight(Kg)</label>
+              <label htmlFor="average_weight">Quantity</label>
               <input
                 type="text"
                 onChange={inputHandler}
@@ -198,7 +198,7 @@ const AddFishPrice = () => {
                 name="average_weight"
                 value={fishprice.average_weight}
                 autoComplete="off"
-                placeholder="Today Average Weight of One Fish"
+                placeholder="Quantity in KG"
               />
               {errors.average_weight && (
                 <span className="fisherror">{errors.average_weight}</span>
@@ -219,7 +219,7 @@ const AddFishPrice = () => {
             <div className="fishinputGroup">
               <center>
                 <button type="submit" className="fishsubmitButton">
-                  ADD A Fish
+                  ADD LIST
                 </button>
               </center>
             </div>

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import toast from "react-hot-toast";
-import "../addBoatTrip/AddBoatTrip.css";
+import "./UpdateBoatTrip.css";
 import formimg1 from "../../backgroundimage/boattrip1.jpg";
 import formimg2 from "../../backgroundimage/boattrip2.jpg";
 import formimg3 from "../../backgroundimage/boattrip3.jpg";
@@ -131,7 +131,7 @@ const UpdateBoatTrip = () => {
               </select>
             </div>
             <div className="boatinputGroup">
-              <label htmlFor="noOfEmployees">No Of Employees Joining</label>
+              <label htmlFor="noOfEmployees">No Of Passengers Joining</label>
               <input
                 type="number"
                 onChange={inputHandler}
@@ -139,11 +139,11 @@ const UpdateBoatTrip = () => {
                 id="noOfEmployees"
                 name="noOfEmployees"
                 autoComplete="off"
-                placeholder="No Of Employees Joining"
+                placeholder="No Of Passengers Joining"
               />
             </div>
             <div className="boatinputGroup">
-              <label htmlFor="fishingCaught">Fishing Caught(Kg)</label>
+              <label htmlFor="fishingCaught">Estimated travel distance (miles)</label>
               <input
                 type="number"
                 onChange={inputHandler}
@@ -151,7 +151,7 @@ const UpdateBoatTrip = () => {
                 id="fishingCaught"
                 name="fishingCaught"
                 autoComplete="off"
-                placeholder="Fishing Caught(Kg)"
+                placeholder="travel distance (miles)"
               />
             </div>
             <div className="boatinputGroup">
@@ -167,7 +167,7 @@ const UpdateBoatTrip = () => {
               />
             </div>
             <div className="boatinputGroup">
-              <label htmlFor="profitAvg">Profit Avg(Rs)</label>
+              <label htmlFor="profitAvg">Fuel required</label>
               <input
                 type="number"
                 onChange={inputHandler}

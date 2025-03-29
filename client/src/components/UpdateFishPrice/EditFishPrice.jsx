@@ -247,7 +247,7 @@ const EditFishPrice = () => {
                 id="average_weight"
                 name="average_weight"
                 autoComplete="off"
-                placeholder="Today Average Weight of One Fish"
+                placeholder="Quantity in KG"
                 value={fishprice.average_weight}
               />
               {errors.average_weight && (
